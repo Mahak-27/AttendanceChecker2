@@ -15,7 +15,7 @@ from signature import match
 #.
 #.
 
-# Mach Threshold
+# Matching Threshold
 THRESHOLD = 85
 
 
@@ -34,8 +34,6 @@ def capture_image_from_cam_into_temp(sign=1):
 
     cv2.namedWindow("test")
 
-    # img_counter = 0
-
     while True:
         ret, frame = cam.read()
         if not ret:
@@ -52,14 +50,12 @@ def capture_image_from_cam_into_temp(sign=1):
             # SPACE pressed
             if not os.path.isdir('temp'):
                 os.mkdir('temp', mode=0o777)  # make sure the directory exists
-            # img_name = "./temp/opencv_frame_{}.png".format(img_counter)
             if(sign == 1):
                 img_name = "./temp/test_img1.png"
             else:
                 img_name = "./temp/test_img2.png"
             print('imwrite=', cv2.imwrite(filename=img_name, img=frame))
             print("{} written!".format(img_name))
-            # img_counter += 1
     cam.release()
     cv2.destroyAllWindows()
     return True
