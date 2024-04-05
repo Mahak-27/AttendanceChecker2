@@ -24,8 +24,3 @@ def match(path1, path2):
     #       "type=", type(similarity_value))
     return float(similarity_value)
 
-
-# ans = match("D:\\Code\\Git stuff\\Signature-Matching\\assets\\1.png",
-#             "D:\\Code\\Git stuff\\Signature-Matching\\assets\\3.png")
-# print(ans)
-# print(type(ans))
