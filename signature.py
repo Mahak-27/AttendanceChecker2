@@ -15,8 +15,8 @@ def match(path1, path2):
     img1 = cv2.resize(img1, (300, 300))
     img2 = cv2.resize(img2, (300, 300))
     # display both images
-    cv2.imshow("One", img1)
-    cv2.imshow("Two", img2)
+    cv2.imshow("Original", img1)
+    cv2.imshow("Test", img2)
     cv2.waitKey(0)
     cv2.destroyAllWindows()
     similarity_value = "{:.2f}".format(ssim(img1, img2)*100)
