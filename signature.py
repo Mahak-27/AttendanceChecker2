@@ -20,7 +20,6 @@ def match(path1, path2):
     cv2.waitKey(0)
     cv2.destroyAllWindows()
     similarity_value = "{:.2f}".format(ssim(img1, img2)*100)
-    # print("answer is ", float(similarity_value),
-    #       "type=", type(similarity_value))
+
     return float(similarity_value)
 
