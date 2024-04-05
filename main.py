@@ -78,7 +78,7 @@ def checkSimilarity(window, path1, path2):
     result = match(path1=path1, path2=path2)
     if(result <= THRESHOLD):
         messagebox.showerror("Failure: Signatures Do Not Match",
-                             "Signatures are "+str(result)+f" % not similar!!")
+                             "Signatures are "+str(result)+f" % similar but they are not of the same person.!!")
         pass
     else:
         messagebox.showinfo("Success: Signatures Match",
