@@ -92,7 +92,7 @@ root.geometry("500x700")  # 300x200
 uname_label = tk.Label(root, text="Compare Two Signatures:", font=10)
 uname_label.place(x=90, y=50)
 
-img1_message = tk.Label(root, text="Signature 1", font=10)
+img1_message = tk.Label(root, text="Original Signature", font=10)
 img1_message.place(x=10, y=120)
 
 image1_path_entry = tk.Entry(root, font=10)
@@ -109,7 +109,7 @@ img1_browse_button.place(x=400, y=140)
 image2_path_entry = tk.Entry(root, font=10)
 image2_path_entry.place(x=150, y=240)
 
-img2_message = tk.Label(root, text="Signature 2", font=10)
+img2_message = tk.Label(root, text="Test Signature", font=10)
 img2_message.place(x=10, y=250)
 
 img2_capture_button = tk.Button(
