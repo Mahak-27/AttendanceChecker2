@@ -1,7 +1,15 @@
 import cv2
 from skimage.metrics import structural_similarity as ssim
 
-# TODO add contour detection for enhanced accuracy
+# contour detection for enhanced accuracy
+
+#.
+#.
+#.
+# @author - sup
+#.
+#.
+#.
 
 
 def match(path1, path2):
