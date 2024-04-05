@@ -7,6 +7,14 @@ from numpy import result_type
 from signature import match
 
 
+#.
+#.
+#.
+# @author - sup
+#.
+#.
+#.
+
 # Mach Threshold
 THRESHOLD = 85
 
