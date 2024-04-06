@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signature Similarity Detector</title>
+    <!-- Include Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-indigo-500 to-pink-500 flex flex-col items-center justify-center">
+    <div class="max-w-xl mx-auto bg-white rounded-lg shadow-lg p-8">
+        <h1 class="text-3xl font-bold mb-8 text-center">Signature Similarity Detector</h1>
+        <div class="flex flex-col items-center space-y-4">
+            <!-- Image 1 upload button -->
+            <input type="file" id="image1-input" accept="image/*" class="hidden">
+            <button class="upload-btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" id="upload-btn1">Upload Image 1</button>
+            <!-- Image 2 upload button -->
+            <input type="file" id="image2-input" accept="image/*" class="hidden">
+            <button class="upload-btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" id="upload-btn2">Upload Image 2</button>
+            <!-- Compare button -->
+            <button class="upload-btn bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 hidden" id="compare-btn">Compare</button>
+        </div>
+    </div>
+    <script>
+        // Event listener for image 1 upload button
+        document.getElementById('upload-btn1').addEventListener('click', function() {
+            document.getElementById('image1-input').click();
+        });
+
+        // Event listener for image 1 input change
+        document.getElementById('image1-input').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                document.getElementById('upload-btn1').textContent = file.name;
+                if (document.getElementById('image2-input').files[0]) {
+                    document.getElementById('compare-btn').style.display = 'block';
+                }
+            }
+        });
+
+        // Event listener for image 2 upload button
+        document.getElementById('upload-btn2').addEventListener('click', function() {
+            document.getElementById('image2-input').click();
+        });
+
+        // Event listener for image 2 input change
+        document.getElementById('image2-input').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                document.getElementById('upload-btn2').textContent = file.name;
+                if (document.getElementById('image1-input').files[0]) {
+                    document.getElementById('compare-btn').style.display = 'block';
+                }
+            }
+        });
+
+        // Event listener for compare button
+        document.getElementById('compare-btn').addEventListener('click', function() {
+            const image1Input = document.getElementById('image1-input').files[0];
+            const image2Input = document.getElementById('image2-input').files[0];
+            if (image1Input && image2Input) {
+                const reader1 = new FileReader();
+                reader1.onload = function(event) {
+                    const image1Data = event.target.result;
+                    const reader2 = new FileReader();
+                    reader2.onload = function(event) {
+                        const image2Data = event.target.result;
+                        fetch('/compare', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                image1: image1Data,
+                                image2: image2Data
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.result) {
+                                const similarity = parseFloat(data.result.split(':')[1].trim());
+                                if (similarity > 85) {
+                                    alert(`Similarity: ${similarity.toFixed(2)}%\nMatch`);
+                                } else {
+                                    alert(`Similarity: ${similarity.toFixed(2)}%\nNot a Match`);
+                                }
+                            } else if (data.error) {
+                                alert(data.error); // Display error message in a popup
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                        });
+                    };
+                    reader2.readAsDataURL(image2Input);
+                };
+                reader1.readAsDataURL(image1Input);
+            } else {
+                alert('Please select both images before comparing.'); // Display error message if images are missing
+            }
+        });
+    </script>
+</body>
+</html>
