@@ -1,53 +1,85 @@
-# Signature Similarity Detector
+# AttendanceChecker2
 
-Signature Similarity Detector is a web application built with Flask and JavaScript that allows users to upload two images of signatures and compare their similarity using a machine learning algorithm.
+## Overview
+
+AttendanceChecker2 is a web application designed to match signatures and determine if they belong to the same person. Users can upload signature images and receive feedback on whether the signatures are similar, along with a similarity percentage. 
+
+## Live Demo
+
+You can access the live application here: [AttendanceChecker2](https://signmatcher.onrender.com)
 
 ## Features
 
-- Upload two signature images from your computer.
-- Compare the similarity percentage between the uploaded images.
-- Receive the comparison result in a pop-up message.
+- Upload two signature images.
+- Real-time comparison of uploaded signatures.
+- Display similarity percentage between the signatures.
+- User-friendly interface for easy interaction.
 
 ## Technologies Used
 
-- Flask: Python web framework used for the backend.
-- JavaScript: Used for client-side scripting to handle image uploads and comparisons.
-- Tailwind CSS: Utility-first CSS framework used for styling the frontend.
-- OpenCV: Python library used for image processing.
-- scikit-image: Python library used for calculating image similarity metrics.
+- **Backend**: Flask
+- **Frontend**: HTML, CSS, JavaScript
+- **Image Processing**: OpenCV, NumPy
+- **Deployment**: Render
 
-## Getting Started
+## Installation
 
-### Prerequisites
+To run this project locally, follow these steps:
 
-- Python 3.x
-- Flask
-- OpenCV
-- scikit-image
+1. **Clone the Repository**:
 
-### Installation
+   ```bash
+   git clone https://github.com/sgindeed/AttendanceChecker2.git
+   cd AttendanceChecker2
+   ```
 
-1. Clone the repository:
+2. **Set Up a Virtual Environment** (optional but recommended):
 
-    bash
-    git clone https://github.com/Aishee06/ai_signaturedetection.git
-    
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+   ```
 
-2. Install dependencies:
+3. **Install Dependencies**:
 
-    bash
-    pip install -r requirements.txt
-    
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-### Usage
+## Running the Application
 
-1. Run the Flask app:
+1. **Start the Flask Server**:
 
-    bash
-    python app.py
-    
+   ```bash
+   python app.py
+   ```
 
-2. Open your web browser and go to [http://localhost:5000](http://localhost:5000).
-3. Upload two signature images using the provided buttons.
-4. Click the "Compare" button to initiate the comparison process.
-5. View the similarity percentage result in a pop-up message.
+2. **Open your browser** and navigate to `http://127.0.0.1:5000` to access the application.
+
+## Usage
+
+1. Click on the "Choose File" buttons to upload two signature images.
+2. After both files are uploaded, click the "Compare Signatures" button.
+3. The application will display the similarity percentage between the two signatures.
+
+## Deployment
+
+The application is deployed on Render. You can check the live version [here](https://signmatcher.onrender.com).
+
+## Contributing
+
+Contributions are welcome! If you would like to contribute to this project, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-YourFeature`).
+3. Make your changes and commit them (`git commit -m 'Add some feature'`).
+4. Push to the branch (`git push origin feature-YourFeature`).
+5. Open a pull request.
+
+
+## Acknowledgements
+
+- [Flask](https://flask.palletsprojects.com/)
+- [OpenCV](https://opencv.org/)
+- [NumPy](https://numpy.org/)
+
