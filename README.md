@@ -24,7 +24,7 @@ You can access the live application here: [AttendanceChecker2](https://signmatch
 
 ## Installation
 
-To run this project locally, follow these steps:
+To run this project locally on your System, follow these steps:
 
 1. **Clone the Repository**:
 
